@@ -5,6 +5,7 @@ public class Finished implements ILoadingtate {
     public void promote(Loading loading) {
         System.out.println(loading.getTruck().getLicensePlate() + " > promotion: ---->  finished");
         loading.getZone().messageEmployee();
+        loading.getZone().truckLeaves();
         System.out.println();
     }
 

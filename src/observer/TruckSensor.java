@@ -11,7 +11,7 @@ public class TruckSensor {
 
     public void testTruckArrives() {
         for(ITruckSensorListener listener : listeners) {
-            listener.truckArrives(new Zone("Zone #1"), new Truck("S-PL-293", false));
+            listener.truckArrives(new Truck("S-PL-293", false));
         }
     }
 

@@ -19,24 +19,14 @@ Rolltor wird geschlossen.
         Truck truck02 = new Truck("FR-ZK-9183", true);
         LogisticCenter logisticCenter = new LogisticCenter();
 
-        TruckSensor truckSensor = new TruckSensor();
-        truckSensor.addListener(logisticCenter);
-        truckSensor.testTruckArrives();
 
         Zone zone01 = logisticCenter.getZoneByIndex(1);
+        zone01.truckArrives(truck01);
         Zone zone02 = logisticCenter.getZoneByIndex(3);
-        logisticCenter.truckArrives(zone01 , truck01);
-        logisticCenter.truckArrives(zone02 , truck02);
+        zone02.truckArrives(truck02);
 
-        while (logisticCenter.getLoadings().size() > 0) {
-            for (Loading loading : logisticCenter.getLoadings()) {
-                if (loading.getState().toString().equals("Finished")) {
-                    loading.promote();
-                    logisticCenter.removeLoading(loading);
-                    break;
-                }
-                loading.promote();
-            }
+        for(Zone zone : logisticCenter.getZones()) {
+            while(zone.getLoading() != null) zone.getLoading().promote();
         }
     }
 }
